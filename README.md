@@ -28,4 +28,4 @@ Run the program
 
 ## Usage/Examples
 
-![Example](Bookbot/static/example.png)
+![Example](static/example.png)
