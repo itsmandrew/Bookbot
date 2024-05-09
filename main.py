@@ -44,7 +44,7 @@ def count_letters(text):
     words = text.split()
 
     for word in words:
-        for letter in word:
+        for letter in word.lower():
             hash_map[letter] += 1
     return hash_map
 
@@ -64,6 +64,19 @@ def generate_report(word_count, letter_map):
     res = "--- Begin report of books/frankenstein.txt ---\n"
     res += f"{word_count} words found in the document\n"
 
+    list_of_dicts = []
+    for key, num_val in letter_map.items():
+        if key.isalpha():
+            hash_map = {}
+            hash_map['letter'] = key
+            hash_map['nums'] = num_val
+            list_of_dicts.append(hash_map)
+
+    list_of_dicts.sort(reverse=True, key=lambda k: k['nums'])
+    for hash_map in list_of_dicts:
+        res += f"The \'{hash_map['letter']}\' character was found {hash_map['nums']} times\n"
+
+    res += "--- End report ---"
 
     return res
 
